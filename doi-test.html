@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>TERN DOI Service - API Examples</title>
+</head>
+<body>
+
+<h1>TERN DOI Service - API Examples</h1>
+
+<p>Activate DOI:
+	<a href="https://doi.tern.uq.edu.au/test/index.php?r=api/active&user_id=w.wong2@uq.edu.au&app_id=97c8512f99a04d7cdebdee7cd9635bf5&doi=10.5072/05/4FF4DECF904B1">Example URL</a>
+</p>
+<hr />
+
+<p>Deactivate DOI: 
+	<a href="https://doi.tern.uq.edu.au/test/index.php?r=api/inactive&user_id=w.wong2@uq.edu.au&app_id=97c8512f99a04d7cdebdee7cd9635bf5&doi=10.5072/05/4FF4DECF904B1">Example URL</a>
+</p>
+<hr />
+
+<p>Mint DOI:  
+	<form action="https://doi.tern.uq.edu.au/test/index.php?r=api/create&user_id=w.wong2@uq.edu.au&app_id=97c8512f99a04d7cdebdee7cd9635bf5&url=http://aceas-data.science.uq.edu.au/knb/metacat/smguru.42.2/default" method="post">
+<textarea name="xml" rows="20" cols="120">
+<?xml version="1.0" encoding="UTF-8"?>
+<resource xmlns="http://datacite.org/schema/kernel-2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://datacite.org/schema/kernel-2.1 http://schema.datacite.org/meta/kernel-2.1/metadata.xsd">
+  <identifier identifierType="DOI"></identifier>
+  <creators>
+    <creator>
+      <creatorName>First, Last name </creatorName>
+    </creator>
+  </creators>
+  <titles>
+    <title>API Minting Example</title>
+  </titles>
+  <publisher>ACEAS</publisher>
+  <publicationYear>2012</publicationYear>
+</resource>
+</textarea><br />
+<input type="submit" value="Mint DOI" /></form></p>
+<hr />
+
+
+<P>Update DOI: 10.5072/05/4FF4DECF904B1
+	<form action="https://doi.tern.uq.edu.au/test/index.php?r=api/update&user_id=w.wong2@uq.edu.au&app_id=97c8512f99a04d7cdebdee7cd9635bf5&url=http://tern.org.au/?&doi=10.5072/05/4FF4DECF904B1" method="post">
+<textarea name="xml" rows="20" cols="120">
+<?xml version="1.0" encoding="UTF-8"?>
+<resource xmlns="http://datacite.org/schema/kernel-2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://datacite.org/schema/kernel-2.1 http://schema.datacite.org/meta/kernel-2.1/metadata.xsd">
+  <identifier identifierType="DOI">10.5072/05/4FB9B7D63BD8E</identifier>
+  <creators>
+    <creator>
+      <creatorName>First, Last name</creatorName>
+    </creator>
+  </creators>
+  <titles>
+    <title>API Update Example</title>
+  </titles>
+  <publisher>ACEAS</publisher>
+  <publicationYear>2012</publicationYear>
+  <subjects>
+    <subject subjectScheme="Subject">Subject</subject>
+  </subjects>
+  <contributors>
+    <contributor contributorType="ContactPerson">
+      <contributorName>Contributor 1</contributorName>
+      <nameIdentifier nameIdentifierScheme="THOMSON">Name Identifier</nameIdentifier>
+    </contributor>
+    <contributor contributorType="ContactPerson">
+      <contributorName>Contributor 2</contributorName>
+      <nameIdentifier nameIdentifierScheme="THOMSON">Name Identifier</nameIdentifier>
+    </contributor>
+    <contributor contributorType="ContactPerson">
+      <contributorName>Contributor 3</contributorName>
+      <nameIdentifier nameIdentifierScheme="THOMSON">Name Identifier</nameIdentifier>
+    </contributor>
+  </contributors>
+  <dates>
+    <date dateType="Accepted">2012-01-01</date>
+    <date dateType="Accepted">2012-02-02</date>
+    <date dateType="Accepted">2012-03-03</date>
+  </dates>
+  <language>UTF-8</language>
+  <resourceType resourceTypeGeneral="Collection">Resource Type</resourceType>
+  <alternateIdentifiers>
+    <alternateIdentifier alternateIdentifierType="Cites">Alternate Identifier 1</alternateIdentifier>
+    <alternateIdentifier alternateIdentifierType="Cites">Alternate Identifier 2</alternateIdentifier>
+    <alternateIdentifier alternateIdentifierType="Cites">Alternate Identifier 3</alternateIdentifier>
+  </alternateIdentifiers>
+  <relatedIdentifiers>
+    <relatedIdentifier relatedIdentifierType="ARK" relationType="Cites">Related Identifier 1</relatedIdentifier>
+    <relatedIdentifier relatedIdentifierType="ARK" relationType="Cites">Related Identifier 2</relatedIdentifier>
+    <relatedIdentifier relatedIdentifierType="ARK" relationType="Cites">Related Identifier 3</relatedIdentifier>
+  </relatedIdentifiers>
+  <sizes>
+    <size>Size 1</size>
+    <size>Size 2</size>
+    <size>Size 3</size>
+  </sizes>
+  <formats>
+    <format>Format 1</format>
+    <format>Format 2</format>
+    <format>Format 3</format>
+  </formats>
+  <version>Version</version>
+  <rights>Rights</rights>
+  <descriptions>
+    <description descriptionType="Abstract">Description</description>
+  </descriptions>
+</resource>
+</textarea><br />
+<input type="submit" value="Update DOI" />
+</form></p>
+<hr />
+
+
+<h1>API Form Post Data Submission:</h1>
+<P><form action="https://doi.tern.uq.edu.au/test/index.php?r=api/post" method="post"> 
+
+<h3>Mendatory Data</h3>
+<table>
+<tr>
+<td>USER ID:</td>
+<td><input type="text" name="user_id" value="w.wong2@uq.edu.au" /></td>
+</tr>
+<tr>
+<td>APP ID:</td>
+<td><input type="text" name="app_id" value="97c8512f99a04d7cdebdee7cd9635bf5" /></td>
+</tr>
+<tr>
+<td>URL:</td>
+<td><input type="text" name="url" value="http://tern.org.au/?" /></td>
+</tr>
+<tr>
+<td>DOI:</td>
+<td><input type="text" name="doi" value="10.5072/05/4FF4DECF904B1" /></td>
+</tr>
+<tr>
+<td>Publisher:</td>
+<td><input type="text" name="publisher" value="ACEAS" /></td>
+</tr>
+<tr>
+<td>Publication Year:</td>
+<td><input type="text" name="publicationYear" value="2012" />
+</td>
+</tr>
+</table>
+
+<hr>
+Title[]: <input type="text" name="title[]" value="API Post Data" />
+
+<hr>
+Creator Name[]: <input type="text" name="creatorName[]" value="Wong, Wing-Fai" />
+
+<hr>
+<br/>
+<br/>
+
+<font color="red"><strong>Symbol [] demotes the system accepting mulitple records of the attribute, and as a set of record between the horizontal bars.</strong></font>  
+
+<br/>
+<br/>
+<h3>Optional Data</h3>
+<table>
+<tr>
+<td>Version:</td>
+<td><input type="text" name="version" value="Version" /></td>
+</tr><tr>
+<td>Rights:</td>
+<td><input type="text" name="rights" value="Rights" />
+</td>
+</tr><tr>
+<td>Language:</td>
+<td><input type="text" name="language" value="UTF-8" />
+</td>
+</tr><tr>
+<td>ResourceType:</td>
+<td><input type="text" name="resourceType" value="Resource Type" />
+</td>
+</tr><tr>
+<td>Resource Type General:</td>
+<td><input type="text" name="resourceTypeGeneral" value="Collection" />
+</td></tr>
+</table>
+
+<hr>
+<table>
+<tr>
+<td>Subject[]:</td>
+<td><input type="text" name="subject[]" value="Subject" /></td>
+</tr><tr>
+<td>Subject Scheme[]:</td>
+<td><input type="text" name="subjectScheme[]" value="Subject" /></td>
+</tr>
+</table>
+
+<hr>
+<table>
+<tr>
+<td>Contributor Name[]:</td>
+<td><input type="text" name="contributorName[]" value="Contributor 1" /></td>
+</tr><tr>
+<td>Contributor Type[]:</td>
+<td><input type="text" name="contributorType[]" value="ContactPerson" /></td>
+</tr><tr>
+<td>Contributor - Name Identifier[]:</td>
+<td><input type="text" name="nameIdentifier[]" value="Name Identifier" /></td>
+</tr><tr>
+<td>Contributor - Name Identifier Scheme[]:</td>
+<td><input type="text" name="nameIdentifierScheme[]" value="THOMSON" /></td>
+</tr>
+</table>
+
+<hr>
+<p>Date[]: <input type="text" name="date[]" value="2012-01-01" /></p>
+ 
+<hr>
+<p>Date Type[]: <input type="text" name="dateType[]" value="Accepted" /></p>
+
+<hr>
+<table>
+<tr>
+<td>Alternate Identifier[]:</td>
+<td><input type="text" name="alternateIdentifier[]" value="Alternate Identifier 1" /></td>
+</tr><tr>
+<td>Alternate Identifier Type[]:</td>
+<td><input type="text" name="alternateIdentifierType[]" value="Cites" /></td>
+</tr>
+</table>
+
+<hr>
+<table>
+<tr>
+<td>Related Identifiers[]:</td>
+<td><input type="text" name="relatedIdentifier[]" value="Related Identifiers 1" /></td>
+</tr><tr>
+<td>Related Identifier Type[]:</td>
+<td><input type="text" name="relatedIdentifierType[]" value="ARK" /></td>
+</tr><tr>
+<td>Relation Type[]:</td>
+<td><input type="text" name="relationType[]" value="Cites" /></td>
+</tr>
+</table>
+
+<hr>
+<p>Size[]: <input type="text" name="size[]" value="Size 1" /></p>
+
+<hr>
+<p>Format[]: <input type="text" name="format[]" value="format 1" /></p>
+
+<hr>
+<p>Description[]: <input type="text" name="description[]" value="Description" /></p>
+
+<hr>
+<p>Description Type[]: <input type="text" name="descriptionType[]" value="Abstract" /></p>
+
+<hr>
+
+<input type="submit" value="Send data to API" />
+</form></p>
+</table>
+</body>
+</html>
+
